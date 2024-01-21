@@ -71,7 +71,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - name: Run snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
         # working-directory: /home/runner/work/cicd-demo/cicd-demo/d13
@@ -86,7 +86,7 @@ jobs:
       #     sarif_file: snyk.sarif
 
         with:
-          args: --file=/home/runner/work/cicd-demo/cicd-demo/d13/pom.xml --sarif-file-output=snyk.sarif
+          args: --file=d13/pom.xml --sarif-file-output=snyk.sarif
           # image: part2
           # args: --file=Dockerfile
       - name: Upload result to GitHub Code Scanning
