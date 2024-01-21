@@ -30,7 +30,8 @@ jobs:
           cache: maven
 
       - name: Run Test with Maven
-        run: mvn -B test
+        # run: mvn -B test
+        run: cd /home/runner/work/cicd-demo/cicd-demo/d13 && mvn -B package --file pom.xml
 
   sonar:
     needs: test
