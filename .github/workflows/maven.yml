@@ -28,8 +28,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      # run: mvn -B package --file pom.xml
-      run: ls # /home/runner/work/cicd-demo/cicd-demo
+      run: cd /home/runner/work/cicd-demo/cicd-demo/d13 && mvn -B package --file pom.xml
+      # run: ls # /home/runner/work/cicd-demo/cicd-demo
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
