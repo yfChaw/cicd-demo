@@ -85,7 +85,7 @@ jobs:
       #     sarif_file: snyk.sarif
 
         with:
-          args: --sarif-file-output=snyk.sarif --file=./Orso.Arpa.Api.sln --severity-threshold=medium
+          args: --sarif-file-output=snyk.sarif
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v3
         with:
