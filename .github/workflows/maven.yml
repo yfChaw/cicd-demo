@@ -80,7 +80,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: debug
-        run: cd d13 && ls -lah
+        run: cd d13 && ls -lah && chmod +x ./mvnw
 
       - name: snyk setup
         uses: snyk/actions/setup@master
