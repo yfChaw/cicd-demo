@@ -86,10 +86,11 @@ jobs:
         uses: snyk/actions/setup@master
 
       - name: snyk test
-        run: cd /home/runner/work/cicd-demo/cicd-demo/d13 && snyk auth && snyk test --sarif-file-output=snyk.sarif
+        run: cd /home/runner/work/cicd-demo/cicd-demo/d13 && SNYK_TOKEN=$SNYK_TOKEN snyk test --sarif-file-output=snyk.sarif
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           # https://docs.snyk.io/snyk-cli/commands/auth
+          # https://docs.snyk.io/snyk-cli/authenticate-the-cli-with-your-account
 
 # have to do the above manual setup as the path spoilt. 
 
