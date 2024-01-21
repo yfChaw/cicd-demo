@@ -86,11 +86,12 @@ jobs:
         uses: snyk/actions/setup@master
 
       - name: snyk test
-        run: cd /home/runner/work/cicd-demo/cicd-demo/d13 && snyk test --sarif-file-output=snyk.sarif
+        run: cd /home/runner/work/cicd-demo/cicd-demo/d13 && snyk auth && snyk test --sarif-file-output=snyk.sarif
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          # https://docs.snyk.io/snyk-cli/commands/auth
 
-# have to do the above manual setup as the path spoilt!!!!
+# have to do the above manual setup as the path spoilt. 
 
       # - name: Run snyk to check for vulnerabilities
       #   uses: snyk/actions/maven@master
