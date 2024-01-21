@@ -1,0 +1,16 @@
+services:
+  ci-workshop-part2:
+    build: .
+    image: part2
+    container_name: part2
+    environment:
+      - JAVA_TOOL_OPTIONS=-Xms1024m -Xmx16096m   # -Xmx4096m
+      - MAVEN_OPTS=-Xmx4096m
+
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    
+    ports:
+      - 8085:8085
