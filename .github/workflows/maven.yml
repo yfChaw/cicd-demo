@@ -79,7 +79,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      
+      - name: debug
+        run: cd d13 && ls -lah
+
       - name: snyk setup
         uses: snyk/actions/setup@master
 
