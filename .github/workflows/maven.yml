@@ -110,7 +110,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         # working-directory: /home/runner/work/cicd-demo/cicd-demo/d13
         with:
-          sarif_file: snyk.sarif
+          sarif_file: d13/snyk.sarif
 
 
 ############### without sonar cloud
