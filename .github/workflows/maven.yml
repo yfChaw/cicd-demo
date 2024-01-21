@@ -86,8 +86,9 @@ jobs:
         uses: snyk/actions/setup@master
 
       - name: snyk test
-        run: cd /home/runner/work/cicd-demo/cicd-demo/d13 && SNYK_TOKEN=${{ secrets.SNYK_TOKEN }} snyk test --continue-on-error=true --sarif-file-output=snyk.sarif
+        run: cd /home/runner/work/cicd-demo/cicd-demo/d13 && SNYK_TOKEN=${{ secrets.SNYK_TOKEN }} snyk test --sarif-file-output=snyk.sarif
                                                                                                             # --severity-threshold=low|medium|high|critical
+        continue-on-error: True
         # env:
         #   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           # https://docs.snyk.io/snyk-cli/commands/auth
