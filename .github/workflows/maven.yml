@@ -72,23 +72,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run snyk to check for vulnerabilities
-        uses: snyk/actions/maven@master
-        # working-directory: /home/runner/work/cicd-demo/cicd-demo/d13
-        continue-on-error: True # To make sure that SARIF upload gets called
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      #   with:
-      #     args: --sarif-file-output=snyk.sarif
-      # - name: Upload result to Github Code Scanning
-      #   uses: github/codeql-action/upload-sarif@v2
-      #   with:
-      #     sarif_file: snyk.sarif
 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          args: --file=d13/pom.xml --sarif-file-output=snyk.sarif
-          # image: part2
-          # args: --file=Dockerfile
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      
+      - name: snyk setup
+        uses: snyk/actions/setup@master
+
+      - name: snyk test
+        run: cd /home/runner/work/cicd-demo/cicd-demo/d13 && snyk test --sarif-file-output=snyk.sarif
+
+# have to do the above manual setup as the path spoilt!!!!
+
+      # - name: Run snyk to check for vulnerabilities
+      #   uses: snyk/actions/maven@master
+      #   # working-directory: /home/runner/work/cicd-demo/cicd-demo/d13
+      #   continue-on-error: True # To make sure that SARIF upload gets called
+      #   env:
+      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      #   with:
+      #     # args: --file=d13/pom.xml --sarif-file-output=snyk.sarif
+      #     command: test
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v3
         # working-directory: /home/runner/work/cicd-demo/cicd-demo/d13
