@@ -16,8 +16,14 @@ public class D13revisionApplication {
 		// SpringApplication.run(D13revisionApplication.class, args);
 
 		SpringApplication app = new SpringApplication(D13revisionApplication.class);
-
 		String port="8085";
+		// https://docs.railway.app/guides/public-networking
+		String envPort = System.getenv("PORT");
+		if (envPort != null){
+			port = envPort;
+		} 
+
+		
 		ApplicationArguments cliOpts = new DefaultApplicationArguments(args);
 
 		if (cliOpts.containsOption("port")) {
